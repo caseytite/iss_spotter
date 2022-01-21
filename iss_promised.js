@@ -3,6 +3,7 @@ const url = "https://api.ipify.org?format=json";
 const location = "https://freegeoip.app/json/";
 
 const fetchMyIP = function () {
+  // console.log(request(url));
   return request(url);
 };
 const fetchCoordsByIp = function (body) {
@@ -14,7 +15,7 @@ const fetchISSFlyOvers = function (body) {
   const url = `https://iss-pass.herokuapp.com/json/?lat=${latitude}&lon=${longitude}`;
   return request(url);
 };
-const nextISSFlyOver = function (body) {
+const nextISSFlyOver = function () {
   //
   return fetchMyIP()
     .then(fetchCoordsByIp)
