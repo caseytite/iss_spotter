@@ -14,17 +14,13 @@ const fetchMyIp = function (callback) {
       callback(Error(msg), null);
       return;
     }
-
     const data = JSON.parse(body);
-    // console.log(error, data);
     callback(null, data);
   });
 };
 
 const fetchCoordsByIp = function (ip, callback) {
-  //
   request(location + ip, (error, response, body) => {
-    //
     if (error) {
       callback(error, null);
     }
@@ -38,18 +34,14 @@ const fetchCoordsByIp = function (ip, callback) {
     const latitude = data.latitude;
     const longitude = data.longitude;
 
-    // console.log(error, data);
     callback(null, { latitude, longitude });
   });
 };
 
 const fetchFlyover = function (latLong, callback) {
-  //
   request(
     `https://iss-pass.herokuapp.com/json/?lat=${latLong.latitude}&lon=${latLong.longitude}`,
     (error, response, body) => {
-      //
-      // console.log(body);
       if (error) {
         callback(error, null);
       }
@@ -60,8 +52,6 @@ const fetchFlyover = function (latLong, callback) {
       }
       let data = JSON.parse(body);
       callback(null, data.response);
-
-      // console.log(error, data);
     }
   );
 };
